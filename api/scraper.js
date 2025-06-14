@@ -1,11 +1,14 @@
-import { getItemList } from '../alarm_list.js';
+const { getItemList } = require('./_alarm_list');
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   try {
-    const alerts = await getItemList();
-    res.status(200).json({ alerts });
+    const items = getItemList();
+
+    // Burada istersen filtreleme veya analiz işlemi yapılabilir
+    // Şimdilik sadece tüm item listesini döndürüyoruz
+    res.status(200).json({ items });
   } catch (error) {
-    console.error("Error in scraper:", error);
-    res.status(500).json({ error: "Scraper failed", details: error.message });
+    console.error('Scraper failed:', error);
+    res.status(500).json({ error: 'Scraper failed', details: error.toString() });
   }
-}
+};
