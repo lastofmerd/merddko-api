@@ -1,18 +1,1 @@
-{
-  "items": [
-    {
-      "name": "Rogue Dagger",
-      "server": "Zero 3",
-      "price": 1000000,
-      "average": 4500000,
-      "shouldAlert": true
-    },
-    {
-      "name": "Priest Hammer",
-      "server": "Zero 4",
-      "price": 4200000,
-      "average": 4400000,
-      "shouldAlert": false
-    }
-  ]
-}
+
