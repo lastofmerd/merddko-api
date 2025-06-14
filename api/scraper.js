@@ -4,11 +4,15 @@ module.exports = async (req, res) => {
   try {
     const items = getItemList();
 
-    // Burada istersen filtreleme veya analiz işlemi yapılabilir
-    // Şimdilik sadece tüm item listesini döndürüyoruz
-    res.status(200).json({ items });
+    // 🔥 Alarm filtresi: fiyat, ortalamanın 1/5'inden düşükse
+    const alarmItems = items.filter(item => item.price < item.average / 5);
+
+    res.status(200).json({
+      items,
+      alarms: alarmItems
+    });
   } catch (error) {
     console.error('Scraper failed:', error);
-    res.status(500).json({ error: 'Scraper failed', details: error.toString() });
+    res.status(500).json({ error: 'Scraper failed', details: error.message });
   }
 };
